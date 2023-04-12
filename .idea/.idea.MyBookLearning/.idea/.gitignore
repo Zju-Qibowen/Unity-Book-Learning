@@ -1,7 +1,7 @@
 # 默认忽略的文件
 /shelf/
 /workspace.xml
-# Rider ignored files
+# Rider 忽略的文件
 /.idea.MyBookLearning.iml
 /modules.xml
 /contentModel.xml
