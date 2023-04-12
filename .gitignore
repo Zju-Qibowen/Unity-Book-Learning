@@ -30,3 +30,5 @@
 
 # Unity crash report files
 *.crash
+# Log
+*.log
