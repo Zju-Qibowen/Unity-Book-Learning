@@ -1,58 +1,32 @@
-Library
-library
-Temp
-temp
-Obj
-obj
-Build
-build
-Builds
-builds
-UserSettings
-usersettings
-MemoryCaptures
-memorycaptures
-Logs
-logs
-/ignore.conf
-*.private
-*.private.meta
-^*.private.[0-9]+$
-^*.private.[0-9]+.meta$
-**/Assets/AssetStoreTools
-**/assets/assetstoretools
-/Assets/Plugins/PlasticSCM*
-/assets/plugins/PlasticSCM*
-.vs
-.gradle
-ExportedObj
-.consulo
-*.csproj
-*.unityproj
-*.sln
-*.suo
-*.tmp
-*.user
-*.userprefs
-*.pidb
-*.booproj
-*.svd
-*.pdb
-*.mdb
-*.opendb
-*.VC.db
-*.pidb.meta
-*.pdb.meta
-*.mdb.meta
-sysinfo.txt
-*.apk
-*.unitypackage
-.collabignore
-crashlytics-build.properties
-**/Assets/AddressableAssetsData/*/*.bin*
-**/assets/addressableassetsdata/*/*.bin*
-**/Assets/StreamingAssets/aa.meta
-**/assets/streamingassets/*/aa/*
-.DS_Store*
-Thumbs.db
-Desktop.ini
+# Unity generated folders
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+
+# Unity build folders
+/[Bb]uild/
+/[Bb]uilds/
+
+# Visual Studio files
+/*.sln
+/*.suo
+/*.csproj
+/*.user
+/*.userprefs
+/*.pidb
+/*.booproj
+
+# macOS files
+.DS_Store
+
+# Other files and folders to ignore
+/Assets/AssetStoreTools*
+/Assets/GoogleMobileAds*
+/Assets/GooglePlayPlugins*
+/Assets/Photon Unity Networking*
+
+# Unity meta files
+*.meta
+
+# Unity crash report files
+*.crash
