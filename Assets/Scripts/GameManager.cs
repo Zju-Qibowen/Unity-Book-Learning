@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     private int _playerHp = 10;
     public string labelText;
     public int maxItems = 4;
+    public bool winGame = false;
     public int ItemCollected
     {
         get { return _itemCollected; }
@@ -22,6 +24,8 @@ public class GameManager : MonoBehaviour
             if (_itemCollected >= maxItems)
             {
                 labelText = "You have found all items!";
+                winGame = true;
+                Time.timeScale = 0f;
             }
             else
             {
@@ -50,5 +54,13 @@ public class GameManager : MonoBehaviour
         GUI.Box(new Rect(20, 20, 150, 25),$"Player Health:{_playerHp}");
         GUI.Box(new Rect(20, 50, 150, 25),$"Items Collected:{_itemCollected}");
         GUI.Label(new Rect(Screen.width/2-100,Screen.height-50,300,50),labelText);
+        if (winGame)
+        {
+            if (GUI.Button(new Rect(Screen.width/2-100,Screen.height/2-50,200,100),"You win!"))
+            {
+                SceneManager.LoadScene(0);
+                Time.timeScale = 1f;
+            }
+        }
     }
 }

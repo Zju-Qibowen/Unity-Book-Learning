@@ -2048,6 +2048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   labelText: Collect 4 items to win this game!
   maxItems: 4
+  winGame: 1
 --- !u!4 &2102751069
 Transform:
   m_ObjectHideFlags: 0
