@@ -8,6 +8,7 @@ public class EnemyBehaviouor : MonoBehaviour
 {
     //
     private Transform patrolRoute;
+    public Transform player;
     //一个List用来存放巡逻的路径点transform
     public List<Transform> locations;
     private int locationIndex = 0;
@@ -15,6 +16,7 @@ public class EnemyBehaviouor : MonoBehaviour
     private void Start()
     {
         patrolRoute = GameObject.Find("Patrol Route").GetComponent<Transform>();
+        player = GameObject.Find("Player").GetComponent<Transform>();
         agent = GetComponent<NavMeshAgent>();
         InitializePatrolRoute();
         MoveToNextLocation();
@@ -51,6 +53,14 @@ public class EnemyBehaviouor : MonoBehaviour
         if (other.name == "Player")
         {
             Debug.Log("Player detected! Attack!");
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.name == "Player")
+        {
+            agent.destination = player.position;
         }
     }
 

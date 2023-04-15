@@ -28,6 +28,7 @@ public class PlayerBehaviour : MonoBehaviour
     private CapsuleCollider _capsuleCollider;
     private float hInput;
     private float vInput;
+    private GameManager _gameManager;
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -99,6 +100,13 @@ public class PlayerBehaviour : MonoBehaviour
         
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name=="Player")
+        {
+            _gameManager.PlayerHp -= 1;
+        }
+    }
     // void Shoot()
     // {
     //     
