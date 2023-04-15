@@ -13,6 +13,21 @@ public class EnemyBehaviouor : MonoBehaviour
     public List<Transform> locations;
     private int locationIndex = 0;
     private NavMeshAgent agent;
+    private int _life = 5;
+
+    public int Life
+    {
+        get { return _life; }
+        set
+        {
+            _life = value;
+            if (_life <=0)
+            {
+                Destroy(this.gameObject);
+                Debug.Log("Enemy killed!");
+            }
+        }
+    }
     private void Start()
     {
         patrolRoute = GameObject.Find("Patrol Route").GetComponent<Transform>();
