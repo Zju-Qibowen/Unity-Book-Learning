@@ -102,7 +102,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.name=="Player")
+        if (other.gameObject.name=="Enemy")
         {
             _gameManager.PlayerHp -= 1;
         }
