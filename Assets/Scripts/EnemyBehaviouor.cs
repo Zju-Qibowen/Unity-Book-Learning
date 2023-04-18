@@ -13,15 +13,15 @@ public class EnemyBehaviouor : MonoBehaviour
     public List<Transform> locations;
     private int locationIndex = 0;
     private NavMeshAgent agent;
-    private int _life = 5;
+    private int _enemyLife = 1;
 
-    public int Life
+    public int EnemyLife
     {
-        get { return _life; }
-        set
+        get { return _enemyLife; }
+        private set
         {
-            _life = value;
-            if (_life <=0)
+            _enemyLife = value;
+            if (_enemyLife <=0)
             {
                 Destroy(this.gameObject);
                 Debug.Log("Enemy killed!");
@@ -88,5 +88,13 @@ public class EnemyBehaviouor : MonoBehaviour
         }
     }
 
-    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.name == "Bullet(Clone)")
+        {
+            EnemyLife = EnemyLife - 1;
+            Debug.Log("Enemy hit");
+        }
+        
+    }
 }

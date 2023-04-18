@@ -35,7 +35,8 @@ public class PlayerBehaviour : MonoBehaviour
         _capsuleCollider = GetComponent<CapsuleCollider>();
         // 1 << 6，表示二进制的1000000，十进制为64。
         groundLayer = 1 << LayerMask.NameToLayer("Ground");
-      
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+
     }
     /// <summary>
     /// Jump是一种瞬时事件，而不是持续事件。因此，将Jump方法放在Update中比FixedUpdate更合适。

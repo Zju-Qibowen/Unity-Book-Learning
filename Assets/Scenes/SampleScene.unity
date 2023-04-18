@@ -2651,6 +2651,7 @@ MonoBehaviour:
   labelText: Collect 4 items to win this game!
   maxItems: 4
   winGame: 0
+  loseGame: 0
 --- !u!4 &2102751069
 Transform:
   m_ObjectHideFlags: 0
