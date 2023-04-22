@@ -60,11 +60,11 @@ public class GameManager : MonoBehaviour
         labelText = "Collect 4 items to win this game!";
     }
 
-    void RestartLevel()
-    {
-        SceneManager.LoadScene(0);
-        Time.timeScale = 1f;
-    }
+    // void RestartLevel()
+    // {
+    //     SceneManager.LoadScene(0);
+    //     Time.timeScale = 1f;
+    // }
     private void OnGUI()
     {
         GUI.Box(new Rect(20, 20, 150, 25),$"Player Health:{_playerHp}");
@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
         {
             if (GUI.Button(new Rect(Screen.width/2-100,Screen.height/2-50,200,100),"You win!"))
             {
-                RestartLevel();
+                Utilities.RestartLevel();
 
             }
         }
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         {
             if (GUI.Button(new Rect(Screen.width/2-100,Screen.height/2-50,200,100),"You lose!"))
             {
-                RestartLevel();
+                Utilities.RestartLevel();
             }
         }
     }
