@@ -414,6 +414,28 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 217178516}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &247916864 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7747153090591784909, guid: fc125567d23b1cf4c8fd90cc72655119, type: 3}
+  m_PrefabInstance: {fileID: 7747153092244403353}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &247916875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247916864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c5a3b42631970d498c1f7b8d5c510a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 0}
+  bulletSpeed: 150
+  moveSpeed: 5
+  rotateSpeed: 20
+  jumpVelocity: 5
 --- !u!1001 &435768352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1015,6 +1037,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705507995}
   - component: {fileID: 705507994}
+  - component: {fileID: 705507997}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1099,6 +1122,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &705507997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 705507993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a68740cf149d4743a5f2065198ae13a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightColor: {r: 1, g: 1, b: 1, a: 1}
+  lightIntensity: 1
+  lightRange: 10
+  lightAngle: 30
 --- !u!1001 &931374901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2652,6 +2691,7 @@ MonoBehaviour:
   maxItems: 4
   winGame: 0
   loseGame: 0
+  _stage: 
 --- !u!4 &2102751069
 Transform:
   m_ObjectHideFlags: 0
@@ -2989,5 +3029,6 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7747153090591784908, guid: fc125567d23b1cf4c8fd90cc72655119, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fc125567d23b1cf4c8fd90cc72655119, type: 3}
