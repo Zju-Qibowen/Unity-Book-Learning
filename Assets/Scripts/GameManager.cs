@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IManager
 {
     /// <summary>
     /// 有两个属性。
@@ -15,6 +15,19 @@ public class GameManager : MonoBehaviour
     public int maxItems = 4;
     public bool winGame = false;
     public bool loseGame = false;
+    public string _stage;
+    
+    public string State
+    {
+        get { return _stage; }
+        set { _stage = value; }
+    }
+
+    public void Initialize()
+    {
+        State = "Manager Initialized!";
+        Debug.Log("State");
+    }
     public int ItemCollected
     {
         get { return _itemCollected; }
@@ -58,6 +71,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         labelText = "Collect 4 items to win this game!";
+        
     }
 
     // void RestartLevel()

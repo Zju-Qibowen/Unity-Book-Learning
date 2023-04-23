@@ -1,0 +1,4 @@
+repository "MyBookLearning@qibowen77@cloud.cn"
+  path "/"
+    br "/main"
+    co "/main"
