@@ -36,7 +36,7 @@ public class EnemyBehaviouor : MonoBehaviour
         InitializePatrolRoute();
         MoveToNextLocation();
     }
-
+//
     void MoveToNextLocation()
     {
         if (locations.Count == 0)
