@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour, IManager
     public int PlayerHp
     {
         get { return _playerHp; }
-        ////如果没有setter方法，则这个属性是只读的。。。
+        ////如果没有setter方法，则这个属性是只读的。。。..
         set
         {
             _playerHp = value; 
