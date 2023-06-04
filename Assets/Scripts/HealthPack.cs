@@ -16,11 +16,15 @@ public class HealthPack : MonoBehaviour
         {
             Debug.Log("Ruby hit the healthpack!");
             RubyController player = other.GetComponent<RubyController>();
-            HealthPack healthPack = this.GetComponent<HealthPack>();
-            if (player != null)
+            HealthPack healthPack = GetComponent<HealthPack>();
+            if (player != null && player.HP < player.maxHealth)
             {
-                player.ChangeHealth(healAmount);
+                player.AddHealth(healAmount);
                 Destroy(this.gameObject);
+            }
+            else if (player == null)
+            {
+                Debug.LogError("未获取到Player！");
             }
         }
     }
