@@ -20,6 +20,7 @@ public class ProjectileBehaviour : MonoBehaviour
 
     public void GenerateBullet(Vector2 direction,float force)
     {
+        //获取组件
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.AddForce(direction*force,ForceMode2D.Force);
         Destroy(this.gameObject,3f);
