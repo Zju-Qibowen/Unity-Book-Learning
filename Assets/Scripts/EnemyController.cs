@@ -15,6 +15,10 @@ public class EnemyController : MonoBehaviour
     private Animator _animator;
     private bool isbroken = true;
     private BoxCollider2D _boxCollider2D;
+    public ParticleSystem smokeEffect;
+
+   
+
     void Start()
     {
         startX = transform.position.x;
@@ -47,7 +51,8 @@ public class EnemyController : MonoBehaviour
         //取消刚体的物理模拟
         _rigidbody2D.simulated = false;
         _animator.SetBool("isFixed",true);
-        
+        //停止产生新的粒子
+        smokeEffect.Stop();
 
     }
     

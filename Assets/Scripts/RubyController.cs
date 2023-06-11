@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RubyController : MonoBehaviour
 {
@@ -14,15 +15,24 @@ public class RubyController : MonoBehaviour
     public int _currentHealth;
     public int maxHealth;
     int initHP = 9;
+    
     //设置是否有无敌状态
     public bool isInvincible = false;
+    //声明一个animator
     private Animator animator;
+    
+    //有一个可以发射的子弹预制件
     public GameObject bulletPrefab;
     private GameObject bullet;
+    
+    //有一个朝向的方向
     private Vector2 lookDirection;
+    
+    //有一个子弹发射冷却时间和是否冷却的bool
     private bool isLaunchCoolDown = false;
-    public float initCoolDownTime = 1f;
-    private float coolDownTime = 0f;
+    public float defaultCoolDownTime = 1f;
+    private float curCoolDownTime = 0f;
+    
     //定义一个协程，2s的无敌
     public IEnumerator InvincibilityCoroutine()
     {
@@ -41,6 +51,7 @@ public class RubyController : MonoBehaviour
         {
             _currentHealth = value;
             Debug.Log($"当前生命值为{HP}/{maxHealth}。");
+            UIHealthBar.Instance.SetValue(_currentHealth/(float)maxHealth);
             if (HP >= maxHealth)
             {
                 Debug.Log("HP已满！");
@@ -51,6 +62,7 @@ public class RubyController : MonoBehaviour
             }
         }
     }
+    
     void Start()
     {
         //获取script所在对象的组件方法
@@ -58,7 +70,6 @@ public class RubyController : MonoBehaviour
         //初始化当前生命值
         HP = initHP;
         animator = GetComponent<Animator>();
-
 
     }
     void Update()
@@ -116,20 +127,33 @@ public class RubyController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.J))
             {
                 animator.SetTrigger("isLaunch");
-                LaunchBullet();
+                RubyLaunchBullet();
                 isLaunchCoolDown = true;
             }
         }
         //如果在冷却，冷却时间慢慢缩减
         else
         {
-            coolDownTime -= Time.deltaTime;
-            if (coolDownTime <= 0)
+            curCoolDownTime -= Time.deltaTime;
+            if (curCoolDownTime <= 0)
             {
                 isLaunchCoolDown = false;
-                coolDownTime = initCoolDownTime;
+                curCoolDownTime = defaultCoolDownTime;
             }
         }
+        
+        //发射射线检测对话
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            LayerMask npcLayerMask = LayerMask.GetMask("NPC");
+            //创建一个2d射线，返回hit
+            RaycastHit2D hit = Physics2D.Raycast(new Vector2(_rigidbody2D.position.x,_rigidbody2D.position.y+0.2f),lookDirection,1.5f,npcLayerMask);
+            if (hit.collider != null)
+            {
+                Debug.Log("射线命中");
+            }
+        }
+        
     }
     void FixedUpdate()
     {
@@ -165,11 +189,11 @@ public class RubyController : MonoBehaviour
 
     }
 
-    void LaunchBullet()
+    void RubyLaunchBullet()
     {
         bullet = Instantiate(bulletPrefab,_rigidbody2D.position+new Vector2(0,0.5f),Quaternion.identity);
         projectileBehaviour = bullet.GetComponent<ProjectileBehaviour>();
-        projectileBehaviour.Launch(lookDirection,projectileBehaviour.launchForce);
+        projectileBehaviour.GenerateBullet(lookDirection,projectileBehaviour.launchForce);
     }
     
 }

@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 public class ProjectileBehaviour : MonoBehaviour
 {
     private Rigidbody2D _rigidbody2D;
-    public Vector2 direction;
+    //public Vector2 direction;
     [FormerlySerializedAs("force")] public float launchForce;
     private EnemyController _enemyController;
     
@@ -18,7 +18,7 @@ public class ProjectileBehaviour : MonoBehaviour
         //_rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    public void Launch(Vector2 direction,float force)
+    public void GenerateBullet(Vector2 direction,float force)
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.AddForce(direction*force,ForceMode2D.Force);
